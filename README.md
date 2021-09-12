@@ -45,6 +45,20 @@ You can download a self-contained prebuilt Ganache with Harmony One support bina
 ./ganache-2.6.0-beta.3-linux-x86_64.AppImage
 ```
 
+## Using docker
+You can also run the following commmand if you would like to use docker to try out the **harmony-one-ganache**
+
+1. First you need to build the git repository using the following docker command:
+```
+docker build -t harmonyone/localnet-ganache https://github.com/harmony-one/harmony-one-ganache-support.git#main:docker
+```
+2. You can now run the docker image that was built with the following command:
+```
+docker run --name harmony-localnet-ganache --rm -d -p 9500:9500 -p 9800:9800 -p 9801:9801 -p 9501:9501 harmonyone/localnet-ganache
+```
+
+> **Known issue** If you are experiencing some troubles with docker with an error message like `failed to solve with frontend dockerfile.v0:`, simply add `DOCKER_BUILDKIT=0 ` as a prefix to your docker build command. Alternatively, you can run `export DOCKER_BUILDKIT=0` command in your terminal and try again.
+
 
 ## About the Ganache and Harmony integration
 * Minimal requirements as the localnet is packed as docker container
